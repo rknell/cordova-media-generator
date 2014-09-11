@@ -1,0 +1,35 @@
+{
+    "name": "cordova-media-generator",
+    "version": "0.0.0",
+    "description": "Generates Cordova Media (Splashscreens & Icons)",
+    "main": "media-gen.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "cordova",
+        "icons",
+        "splash",
+        "screens",
+        "phonegap"
+    ],
+    "author": "Snappy Apps",
+    "license": "Apache 2.0",
+    "dependencies": {
+        "gm": "^1.16.0",
+        "mkdirp": "^0.5.0"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rknell/cordova-media-generator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rknell/cordova-media-generator/issues"
+    },
+    "homepage": "https://github.com/rknell/cordova-media-generator",
+    "preferGlobal": "true",
+    "bin": {
+        "mediagen": "media-gen.js"
+    }
+}
