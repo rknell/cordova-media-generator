@@ -22,4 +22,4 @@ $ mediagen logo.jpg fff
 ```
 
 This will overwrite all images in the platforms/ directory with the correct sizes and in the correct location for Cordova
-The recommended image / logo size if 2000x2000 or so. Its not a problem if the logo isn't square.
+The recommended image / logo size of 2000px x 2000px or so. Its not a problem if the logo isn't square.
