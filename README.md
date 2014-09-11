@@ -11,13 +11,15 @@ with NodeJS installed:
 $ npm install -g cordova-media-generator
 ```
 
-Once installed simply run:
+Once installed, cd to the root of your codova application and run:
 ```bash
-mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
+$ mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
 ```
 
-It will create a subfolder /Resources
+EXAMPLE:
+```bash
+$ mediagen logo.jpg fff
+```
 
-Which will contain images in the right format to go directly into the cordova app. The recommended image / logo size if 2000x2000 or so. Its not a problem if the logo isn't square.
-
-In the VERY near future the app will insert it into the right directories. There are also some new image formats that have come out recently to be updated... But in all its working and saves hours of time.
+This will overwrite all images in the platforms/ directory with the correct sizes and in the correct location for Cordova
+The recommended image / logo size if 2000x2000 or so. Its not a problem if the logo isn't square.
