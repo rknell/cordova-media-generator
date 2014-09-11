@@ -18,6 +18,6 @@ mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
 
 It will create a subfolder /Resources
 
-Which will contain images in the right format to go directly into the cordova app.
+Which will contain images in the right format to go directly into the cordova app. The recommended image / logo size if 2000x2000 or so. Its not a problem if the logo isn't square.
 
 In the VERY near future the app will insert it into the right directories. There are also some new image formats that have come out recently to be updated... But in all its working and saves hours of time.
