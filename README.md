@@ -7,10 +7,14 @@ Usage:
 
 with NodeJS installed:
 
-[sudo] npm install -g cordova-media-generator
+```bash
+$ npm install -g cordova-media-generator
+```
 
 Once installed simply run:
+```bash
 mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
+```
 
 It will create a subfolder /Resources
 
