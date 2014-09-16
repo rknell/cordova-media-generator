@@ -11,7 +11,7 @@ with NodeJS installed:
 $ npm install -g cordova-media-generator
 ```
 
-Once installed, cd to the root of your codova application and run:
+Once installed, cd to the root of your Cordova application and run:
 ```bash
 $ mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
 ```
@@ -22,4 +22,6 @@ $ mediagen logo.jpg fff
 ```
 
 This will overwrite all images in the platforms/ directory with the correct sizes and in the correct location for Cordova
-The recommended image / logo size of 2000px x 2000px or so. Its not a problem if the logo isn't square.
+The recommended image or logo size is 2000px x 2000px. Its not a problem if the logo isn't square.
+
+It also creates a <projectdir>/Media directory that has images for the Apple and Android stores such as an app icon.

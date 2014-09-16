@@ -148,9 +148,12 @@ fs.readdir(path.join(process.cwd(), "platforms", "ios"), function (err, result) 
         {width: 96, height: 96, path: "android/ant-build/res/drawable-xhdpi", filename: "icon.png"},
 
         //Android Store Icons
-        {width: 512, height: 512, path: "android/store", filename: "512.png"},
-        {width: 1024, height: 500, path: "android/store", filename: "1024x500.png"},
-        {width: 180, height: 120, path: "android/store", filename: "180x120.png"}
+        {width: 512, height: 512, path: "../Media/android/store", filename: "512.png"},
+        {width: 1024, height: 500, path: "../Media/android/store", filename: "1024x500.png"},
+        {width: 180, height: 120, path: "../Media/android/store", filename: "180x120.png"},
+
+        //Apple store icons
+        {width: 1024, height: 1024, path: "../Media/ios/store", filename: "1024x1024-AppIcon.png"}
     ];
 
     if (!process.argv[2]) {
