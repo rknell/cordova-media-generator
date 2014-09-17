@@ -41,7 +41,7 @@ It will create an example file called `mediagen-config.json` which you can now e
 ###Example `mediagen-config.json`
 ```javascript
 [
-    {"width": 120, "height": 120, "path": "../Media/custom/filename.png"}
+    {"width": 120, "height": 120, "path": "../Media/custom", "filename":"filename.png"}
 ]
 ```
 
