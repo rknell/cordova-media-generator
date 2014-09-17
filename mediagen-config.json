@@ -1,3 +1,7 @@
-[
-    {"width": 120, "height": 120, "path": "../Media/custom", "filename":"filename.png"}
-]
+{
+    "image": "logo.png",
+    "background": "fff",
+    "customImages": [
+        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"filename.png"}
+    ]
+}

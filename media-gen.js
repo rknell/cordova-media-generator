@@ -3,7 +3,8 @@
 var gm = require('gm'),
     mkdirp = require('mkdirp'),
     path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    config;
 
 function resize(width, height, bgColour, imagePath, outputFilename, outputPath) {
     gm(path.join(process.cwd(), imagePath)).size(function (error, size) {
@@ -164,28 +165,38 @@ function generate() {
 
         ];
 
-        try {
-            var extra = require(process.cwd() + "/mediagen-config");
-            extra.forEach(function (item) {
+        if(config.customImages){
+            config.customImages.forEach(function (item) {
                 images.push(item);
             });
-        } catch (e){
-            console.log("Error loading config file", e);
         }
 
 
-        if (!process.argv[2]) {
-            console.log('You must specify a filename as the second argument');
-        } else if (!process.argv[3]) {
-            console.log("Please specify a background colour in hex values as the third argument");
+
+        if (!process.argv[2] && !config.image) {
+            console.log('You must specify a filename as the second argument, or in a config file');
+        } else if (!process.argv[3] && !config.background) {
+            console.log("Please specify a background colour in hex values as the third argument, or in a config file");
         } else {
             console.log("------------------------------");
-            console.log("cordova-media-generator");
+            console.log("   cordova-media-generator");
             console.log("------------------------------");
             console.log("Generating " + images.length + " images so you don't have to");
             console.log("------------------------------");
             images.forEach(function (image) {
-                resize(image.width, image.height, '#' + process.argv[3], process.argv[2], image.filename, image.path);
+                var background, sourceImage;
+                if(process.argv[3]){
+                    background = process.argv[3];
+                } else {
+                    background = config.background;
+                }
+
+                if(process.argv[2]){
+                    sourceImage = process.argv[2];
+                } else {
+                    sourceImage = config.image;
+                }
+                resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
             });
         }
     });
@@ -195,6 +206,12 @@ function genConfig() {
     var destFile = path.join(process.cwd(), "mediagen-config.json"),
         sourceFile = path.join(__dirname, "mediagen-config.json");
     fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
+}
+
+try {
+    config = require(process.cwd() + "/mediagen-config");
+} catch (e){
+    console.log("Could not find configuration file. To create one run `$ mediagen init`");
 }
 
 switch (process.argv[2]) {

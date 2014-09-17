@@ -1,6 +1,6 @@
 {
     "name": "cordova-media-generator",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Generates Cordova Media (Splashscreens & Icons)",
     "main": "media-gen.js",
     "scripts": {
@@ -11,7 +11,9 @@
         "icons",
         "splash",
         "screens",
-        "phonegap"
+        "phonegap",
+        "appstore",
+        "app store"
     ],
     "author": "Snappy Apps",
     "license": "Apache 2.0",
