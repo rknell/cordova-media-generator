@@ -62,9 +62,9 @@ It will create an example file called `mediagen-config.json` which you can now e
 
 The config variables are below:
 
-image: the large source image
-background: the solid background colour in hex values
-custom images: an array of custom image objects for additional media if desired
+- image: the large source image
+- background: the solid background colour in hex values
+- custom images: an array of custom image objects for additional media if desired
     - width: the width of the image in pixels
     - height: the height of the image in pixels
     - path: the directory to save the output
