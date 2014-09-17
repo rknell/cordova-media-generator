@@ -165,10 +165,12 @@ function generate() {
         ];
 
         try {
-            var extra = require("mediagen-config");
+            var extra = require(process.cwd() + "/mediagen-config");
             extra.forEach(function (item) {
                 images.push(item);
             });
+        } catch (e){
+            console.log("Error loading config file", e);
         }
 
 
