@@ -1,6 +1,6 @@
 {
     "name": "cordova-media-generator",
-    "version": "0.1.8",
+    "version": "0.2.0",
     "description": "Generates Cordova Media (Splashscreens & Icons)",
     "main": "media-gen.js",
     "scripts": {

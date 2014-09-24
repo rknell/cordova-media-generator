@@ -1,7 +1,7 @@
 {
-    "image": "logo.png",
-    "background": "fff",
+    "icon": {"filename":"icon.png","background":"fff"},
+    "splash": {"filename":"splash.png","background":"fff"},
     "customImages": [
-        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"filename.png"}
+        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"outputFilename.png", "source":{"filename":"image.png","background":"fff"}}
     ]
 }

@@ -4,6 +4,8 @@ cordova-media-generator
 CLI Utility that generates Cordova / Phonegap image assets required for app store submission, icons, and splash screens.
 It requires your logo to have a solid background colour but does not distort or lose any image content so everything is at the maximum size without loss.
 
+## New in v0.2.0 - Support for different source images for icon, splash and custom assets.
+
 Usage:
 
 with NodeJS installed:
@@ -52,20 +54,27 @@ It will create an example file called `mediagen-config.json` which you can now e
 ###Example `mediagen-config.json`
 ```javascript
 {
-    "image": "logo.png",
-    "background": "fff",
+    "icon": {"filename":"icon.png","background":"fff"},
+    "splash": {"filename":"splash.png","background":"fff"},
     "customImages": [
-        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"filename.png"}
+        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"outputFilename.png", "source":{"filename":"image.png","background":"fff"}}
     ]
 }
 ```
 
 The config variables are below:
 
-- image: the large source image
-- background: the solid background colour in hex values
+- icon: icon image
+    - filename: path to source filename
+    - background: solid colour in hex
+- splash: splash image
+    - filename: path to source filename
+    - background: solid colour in hex
 - custom images: an array of custom image objects for additional media if desired
     - width: the width of the image in pixels
     - height: the height of the image in pixels
     - path: the directory to save the output
     - filename: the output file name with extension
+    - source: the source file, same definition as an icon or splash above
+        - filename: path to source filename
+        - background: solid colour in hex
