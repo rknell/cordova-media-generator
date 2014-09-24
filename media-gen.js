@@ -4,7 +4,7 @@ var gm = require('gm'),
     mkdirp = require('mkdirp'),
     path = require('path'),
     fs = require('fs'),
-    config;
+    config, iOSProjectName;
 
 function resize(width, height, bgColour, imagePath, outputFilename, outputPath) {
     gm(path.join(process.cwd(), imagePath)).size(function (error, size) {
@@ -60,13 +60,7 @@ function resize(width, height, bgColour, imagePath, outputFilename, outputPath) 
     });
 }
 
-var iOSProjectName;
-
-
 function generate() {
-
-
-//Get iOS Project Path
     fs.readdir(path.join(process.cwd(), "platforms", "ios"), function (err, result) {
         if (err) {
             console.log("Error getting iOS path", err);
@@ -79,8 +73,6 @@ function generate() {
                 }
             });
         }
-
-
 
 
         var images = [
@@ -165,12 +157,11 @@ function generate() {
 
         ];
 
-        if(config.customImages){
+        if (config.customImages) {
             config.customImages.forEach(function (item) {
                 images.push(item);
             });
         }
-
 
 
         if (!process.argv[2] && !config.image) {
@@ -185,13 +176,13 @@ function generate() {
             console.log("------------------------------");
             images.forEach(function (image) {
                 var background, sourceImage;
-                if(process.argv[3]){
+                if (process.argv[3]) {
                     background = process.argv[3];
                 } else {
                     background = config.background;
                 }
 
-                if(process.argv[2]){
+                if (process.argv[2]) {
                     sourceImage = process.argv[2];
                 } else {
                     sourceImage = config.image;
@@ -206,12 +197,15 @@ function genConfig() {
     var destFile = path.join(process.cwd(), "mediagen-config.json"),
         sourceFile = path.join(__dirname, "mediagen-config.json");
     fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
+    console.log("Created `mediagen-config.json` file in the current directory.");
 }
 
 try {
     config = require(process.cwd() + "/mediagen-config");
-} catch (e){
-    console.log("Could not find configuration file. To create one run `$ mediagen init`");
+} catch (e) {
+    if (process.argv[2] !== "init") {
+        console.log("Could not find configuration file. To create one run `$ mediagen init`");
+    }
 }
 
 switch (process.argv[2]) {
