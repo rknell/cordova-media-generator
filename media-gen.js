@@ -84,7 +84,7 @@ function generate() {
             {width: 100, height: 100, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-50@2x.png", source: process.argv[2] || config.icon || config.image},
             {width: 60, height: 60, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-60.png", source: process.argv[2] || config.icon || config.image},
             {width: 72, height: 72, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-72.png", source: process.argv[2] || config.icon || config.image},
-            {width: 114, height: 114, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-72@2x.png", source: process.argv[2] || config.icon || config.image},
+            {width: 144, height: 144, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-72@2x.png", source: process.argv[2] || config.icon || config.image},
             {width: 76, height: 76, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-76.png", source: process.argv[2] || config.icon || config.image},
             {width: 152, height: 152, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-76@2x.png", source: process.argv[2] || config.icon || config.image},
             {width: 29, height: 29, path: "ios/" + iOSProjectName + "/Resources/icons", filename: "icon-small.png", source: process.argv[2] || config.icon || config.image},
