@@ -4,7 +4,7 @@ cordova-media-generator
 CLI Utility that generates Cordova / Phonegap image assets required for app store submission, icons, and splash screens.
 It requires your logo to have a solid background colour but does not distort or lose any image content so everything is at the maximum size without loss.
 
-## New in v0.2.0 - Support for different source images for icon, splash and custom assets.
+## New in v0.3.0 - Support for screenshots courtesy of PhantomJS
 
 Usage:
 
@@ -58,10 +58,19 @@ It will create an example file called `mediagen-config.json` which you can now e
     "splash": {"filename":"splash.png","background":"fff"},
     "customImages": [
         {"width": 120, "height": 120, "path": "../Media/custom", "filename":"outputFilename.png", "source":{"filename":"image.png","background":"fff"}}
+    ],
+    "screenshots": [
+        {"url":"http://www.google.com", "name":"homepage"}
     ]
 }
 ```
 
+##Screenshots (Experimental)
+Screenshots are a new feature that use PhantomJS to quickly generate a number of the screenshot assets you need when submitting to the app store. You need your local development server running when you execute `mediagen` so it can access the Cordova versions of the files. Of course this won't be able to access a number of things in lots of apps but hopefully it should get you up on the app store pretty quickly.
+This is still pretty experimental, and also please be aware that it may seem to hang for a minute or so before you see the screenshots being generated (it does need to visit the page each time!)
+
+
+##Config
 The config variables are below:
 
 - icon: icon image
@@ -78,3 +87,6 @@ The config variables are below:
     - source: the source file, same definition as an icon or splash above
         - filename: path to source filename
         - background: solid colour in hex
+- screenshots: An array of screenshot objects
+    - url: url to your local development server
+    - name: name of the page for easy reference later on

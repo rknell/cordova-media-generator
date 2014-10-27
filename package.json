@@ -1,37 +1,45 @@
 {
-    "name": "cordova-media-generator",
-    "version": "0.2.1",
-    "description": "Generates Cordova Media (Splashscreens & Icons)",
-    "main": "media-gen.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "cordova",
-        "icons",
-        "splash",
-        "screens",
-        "phonegap",
-        "appstore",
-        "app store"
-    ],
-    "author": "Snappy Apps",
-    "license": "Apache 2.0",
-    "dependencies": {
-        "gm": "^1.16.0",
-        "mkdirp": "^0.5.0"
-    },
-    "devDependencies": {},
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rknell/cordova-media-generator.git"
-    },
-    "bugs": {
-        "url": "https://github.com/rknell/cordova-media-generator/issues"
-    },
-    "homepage": "https://github.com/rknell/cordova-media-generator",
-    "preferGlobal": "true",
-    "bin": {
-        "mediagen": "media-gen.js"
-    }
+  "name": "cordova-media-generator",
+  "version": "0.2.1",
+  "description": "Generates Cordova Media (Splashscreens & Icons)",
+  "main": "media-gen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cordova",
+    "icons",
+    "splash",
+    "screens",
+    "phonegap",
+    "appstore",
+    "app store"
+  ],
+  "author": "Snappy Apps",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "async": "^0.9.0",
+    "gm": "^1.16.0",
+    "mkdirp": "^0.5.0",
+    "phantom": "^0.6.5",
+    "phantomjs": "^1.9.10"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "chai-as-promised": "^4.1.1",
+    "mocha": "^1.21.5",
+    "mocha-as-promised": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rknell/cordova-media-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rknell/cordova-media-generator/issues"
+  },
+  "homepage": "https://github.com/rknell/cordova-media-generator",
+  "preferGlobal": "true",
+  "bin": {
+    "mediagen": "media-gen.js"
+  }
 }

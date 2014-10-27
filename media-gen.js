@@ -4,7 +4,9 @@ var gm = require('gm'),
     mkdirp = require('mkdirp'),
     path = require('path'),
     fs = require('fs'),
+    screenshots = require('./screenshots'),
     config, iOSProjectName;
+
 
 function resize(width, height, bgColour, imagePath, outputFilename, outputPath) {
     gm(path.join(process.cwd(), imagePath)).size(function (error, size) {
@@ -61,6 +63,9 @@ function resize(width, height, bgColour, imagePath, outputFilename, outputPath) 
 }
 
 function generate() {
+
+
+
     fs.readdir(path.join(process.cwd(), "platforms", "ios"), function (err, result) {
         if (err) {
             console.log("Error getting iOS path", err);
@@ -155,7 +160,14 @@ function generate() {
             //Apple store icons
             {width: 1024, height: 1024, path: "../Media/ios/store", filename: "1024x1024-AppIcon.png", source: process.argv[2] || config.icon || config.image}
 
+            //Screenshot version of the logo
+
         ];
+
+        if(config.screenshots)
+            screenshots.pages = config.screenshots;
+
+
 
         if (config.customImages) {
             config.customImages.forEach(function (item) {
@@ -170,11 +182,14 @@ function generate() {
         } else if (!process.argv[3] && !config.background && (!config.icon && !config.splash)) {
             console.log("Please specify a background colour in hex values as the third argument, or in a config file");
         } else {
+
+            var totalImages = images.length + (screenshots.pages.length * screenshots.screenshots.length);
             console.log("------------------------------");
             console.log("   cordova-media-generator");
             console.log("------------------------------");
-            console.log("Generating " + images.length + " images so you don't have to");
+            console.log("Generating " + totalImages + " images so you don't have to");
             console.log("------------------------------");
+            screenshots.generateAll();
             images.forEach(function (image) {
                 var background, sourceImage;
 
@@ -212,6 +227,8 @@ function genConfig() {
     fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
     console.log("Created `mediagen-config.json` file in the current directory.");
 }
+
+
 
 try {
     config = require(process.cwd() + "/mediagen-config");
