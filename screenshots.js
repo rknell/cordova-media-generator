@@ -6,7 +6,7 @@ var phantom = require('phantom'),
     async = require('async');
 
 var output = {
-    generate: function (url, width, height, savePath, saveFilename) {
+    generate: function (ph, url, width, height, savePath, saveFilename) {
 
 
         var deferred = q.defer();
@@ -15,18 +15,20 @@ var output = {
             deferred.reject({error: "A required argument is missing"});
             return deferred.promise;
         }
-        phantom.create(function (ph) {
-            ph.createPage(function (page) {
-                page.setViewportSize(width, height, function (result) {
-                    page.open(url, function (status) {
-                        mkdirp(__dirname + savePath, function (err) {
-                            if (err) deferred.reject(err);
-                            page.render(savePath + "/" + saveFilename, {format: 'png', quality: '60'}, function (err) {
-                                console.log("Generated screenshot", url, savePath, saveFilename);
-                                if (err) deferred.reject(err);
-                                ph.exit();
+
+        ph.createPage(function (page) {
+            page.setViewportSize(width, height, function (result) {
+                page.open(url, function (status) {
+                    mkdirp(__dirname + savePath, function (err) {
+                        if (err) deferred.reject(err);
+                        page.render(savePath + "/" + saveFilename, {format: 'png', quality: '60'}, function (err) {
+                            console.log("Generated screenshot", url, savePath, saveFilename);
+                            if (err) {
+                                deferred.reject(err);
+                            }else{
                                 deferred.resolve({success: true});
-                            });
+                            }
+                            page.close();
                         });
                     });
                 });
@@ -36,17 +38,20 @@ var output = {
     },
     generateAll: function () {
         var deferred = q.defer();
-        async.eachLimit(output.screenshots, 1, function (item, cb1) {
-            async.eachLimit(output.pages, 1, function (page, cb2) {
-                output.generate(page.url, item.width, item.height, item.savePath, item.filename + page.name + ".png")
-                    .then(function (result) {
-                        cb2();
-                    })
-            }, function () {
-                cb1();
-            })
-        }, function () {
-            deferred.resolve(true);
+        phantom.create(function (ph) {
+          async.eachLimit(output.screenshots, 1, function (item, cb1) {
+              async.eachLimit(output.pages, 1, function (page, cb2) {
+                  output.generate(ph, page.url, item.width, item.height, item.savePath, item.filename + page.name + ".png")
+                      .then(function (result) {
+                          cb2();
+                      })
+              }, function () {
+                  cb1();
+              })
+          }, function () {
+              ph.exit();
+              deferred.resolve(true);
+          });
         });
         return deferred.promise;
     },
