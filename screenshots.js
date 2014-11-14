@@ -35,7 +35,7 @@ var output = {
                     }
                     mkdirp(__dirname + savePath, function (err) {
                         if (err) deferred.reject(err);
-                        page.render(savePath + "/" + saveFilename, {format: 'png', quality: '60'}, function (err) {
+                        page.render(savePath + "/" + saveFilename, {format: 'jpg', quality: '60'}, function (err) {
                             console.log("Generated screenshot", url, savePath, saveFilename);
                             if (err) {
                                 deferred.reject(err);
@@ -55,7 +55,7 @@ var output = {
         phantom.create(function (ph) {
           async.eachLimit(output.screenshots, 1, function (item, cb1) {
               async.eachLimit(output.pages, 1, function (page, cb2) {
-                  output.generate(ph, page.url, item.width, item.height, item.devicePixelRatio, item.savePath, item.filename + page.name + ".png")
+                  output.generate(ph, page.url, item.width, item.height, item.devicePixelRatio, item.savePath, item.filename + page.name + ".jpg")
                       .then(function (result) {
                           cb2();
                       })
