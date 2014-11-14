@@ -5,8 +5,14 @@ var phantom = require('phantom'),
     mkdirp = require('mkdirp'),
     async = require('async');
 
+function evaluate(page, func) {
+    var args = [].slice.call(arguments, 2);
+    var fn = "function() { return (" + func.toString() + ").apply(this, " + JSON.stringify(args) + ");}";
+    return page.evaluate(fn);
+}
+
 var output = {
-    generate: function (ph, url, width, height, savePath, saveFilename) {
+    generate: function (ph, url, width, height, devicePixelRatio, savePath, saveFilename) {
 
 
         var deferred = q.defer();
@@ -19,6 +25,14 @@ var output = {
         ph.createPage(function (page) {
             page.setViewportSize(width, height, function (result) {
                 page.open(url, function (status) {
+                    if (devicePixelRatio && devicePixelRatio !== 1) {
+                        evaluate(page, function (devicePixelRatio) {
+                            document.body.style.webkitTransform = "scale(" + devicePixelRatio + ")";
+                            document.body.style.webkitTransformOrigin = "0% 0%";
+
+                            document.body.style.width = (100 / devicePixelRatio) + "%";
+                        }, devicePixelRatio);
+                    }
                     mkdirp(__dirname + savePath, function (err) {
                         if (err) deferred.reject(err);
                         page.render(savePath + "/" + saveFilename, {format: 'png', quality: '60'}, function (err) {
@@ -41,7 +55,7 @@ var output = {
         phantom.create(function (ph) {
           async.eachLimit(output.screenshots, 1, function (item, cb1) {
               async.eachLimit(output.pages, 1, function (page, cb2) {
-                  output.generate(ph, page.url, item.width, item.height, item.savePath, item.filename + page.name + ".png")
+                  output.generate(ph, page.url, item.width, item.height, item.devicePixelRatio, item.savePath, item.filename + page.name + ".png")
                       .then(function (result) {
                           cb2();
                       })
@@ -66,11 +80,11 @@ var output = {
         {filename: "android-4in-1280x720-land", width: 1920, height: 1080, savePath: 'Media/android/screenshots/4in'},
         {filename: "android-4in-1280x720-port", width: 1080, height: 1920, savePath: 'Media/android/screenshots/4in'},
         {filename: "ipad-1024x768-land", width: 1024, height: 768, savePath: 'Media/ios/screenshots/ipad'},
-        {filename: "ipadretina-2048x1536-land", width: 2048, height: 1536, savePath: 'Media/ios/screenshots/ipadRetina'},
+        {filename: "ipadretina-2048x1536-land", width: 2048, height: 1536, devicePixelRatio: 2, savePath: 'Media/ios/screenshots/ipadRetina'},
         {filename: "iphone4-960x640-land", width: 960, height: 640, savePath: 'Media/ios/screenshots/iphone4'},
         {filename: "iphone5-1136x640-land", width: 1136, height: 640, savePath: 'Media/ios/screenshots/iphone5'},
         {filename: "ipad-1024x768-port", width: 768, height: 1024, savePath: 'Media/ios/screenshots/ipad'},
-        {filename: "ipadretina-2048x1536-port", width: 1536, height: 2048, savePath: 'Media/ios/screenshots/ipadRetina'},
+        {filename: "ipadretina-2048x1536-port", width: 1536, height: 2048, devicePixelRatio: 2, savePath: 'Media/ios/screenshots/ipadRetina'},
         {filename: "iphone4-640x960-port", width: 640, height: 960, savePath: 'Media/ios/screenshots/iphone4'},
         {filename: "iphone5-640x1136-port", width: 640, height: 1136, savePath: 'Media/ios/screenshots/iphone5'},
         {filename: "iphone6p-1080x1920-port", width: 1080, height: 1920, savePath: 'Media/ios/screenshots/iphone6p'},
