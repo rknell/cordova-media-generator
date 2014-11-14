@@ -12,9 +12,7 @@ function evaluate(page, func) {
 }
 
 var output = {
-    generate: function (ph, url, width, height, devicePixelRatio, savePath, saveFilename) {
-
-
+    generate:    function (ph, url, width, height, devicePixelRatio, savePath, saveFilename) {
         var deferred = q.defer();
 
         if (!url || !width || !height || !savePath || !saveFilename) {
@@ -23,13 +21,12 @@ var output = {
         }
 
         ph.createPage(function (page) {
-            page.setViewportSize(width, height, function (result) {
-                page.open(url, function (status) {
+            page.setViewportSize(width, height, function () {
+                page.open(url, function () {
                     if (devicePixelRatio && devicePixelRatio !== 1) {
                         evaluate(page, function (devicePixelRatio) {
                             document.body.style.webkitTransform = "scale(" + devicePixelRatio + ")";
                             document.body.style.webkitTransformOrigin = "0% 0%";
-
                             document.body.style.width = (100 / devicePixelRatio) + "%";
                         }, devicePixelRatio);
                     }
@@ -39,7 +36,7 @@ var output = {
                             console.log("Generated screenshot", url, savePath, saveFilename);
                             if (err) {
                                 deferred.reject(err);
-                            }else{
+                            } else {
                                 deferred.resolve({success: true});
                             }
                             page.close();
@@ -53,23 +50,23 @@ var output = {
     generateAll: function () {
         var deferred = q.defer();
         phantom.create(function (ph) {
-          async.eachLimit(output.screenshots, 1, function (item, cb1) {
-              async.eachLimit(output.pages, 1, function (page, cb2) {
-                  output.generate(ph, page.url, item.width, item.height, item.devicePixelRatio, item.savePath, item.filename + page.name + ".jpg")
-                      .then(function (result) {
-                          cb2();
-                      })
-              }, function () {
-                  cb1();
-              })
-          }, function () {
-              ph.exit();
-              deferred.resolve(true);
-          });
+            async.eachLimit(output.screenshots, 1, function (item, cb1) {
+                async.eachLimit(output.pages, 1, function (page, cb2) {
+                    output.generate(ph, page.url, item.width, item.height, item.devicePixelRatio, item.savePath, item.filename + page.name + ".jpg")
+                        .then(function (result) {
+                            cb2();
+                        })
+                }, function () {
+                    cb1();
+                })
+            }, function () {
+                ph.exit();
+                deferred.resolve(true);
+            });
         });
         return deferred.promise;
     },
-    pages: [],
+    pages:       [],
     screenshots: [
         {filename: "android-10in-1280x720-land", width: 1280, height: 720, savePath: 'Media/android/screenshots/10in'},
         {filename: "android-10in-2048x1152-land", width: 2048, height: 1152, savePath: 'Media/android/screenshots/10in'},
