@@ -547,7 +547,7 @@ function generate() {
 
     ];
 
-    if (config.screenshots && conifg.screenshots.length)
+    if (config.screenshots && config.screenshots.length)
       screenshots.pages = config.screenshots;
 
 
