@@ -68,12 +68,17 @@ var output = {
           .then(function (result) {
             cb2();
           })
-      }, function () {
-        cb1();
+          .catch(cb2)
+      }, function (err) {
+        cb1(err);
       })
-    }, function () {
+    }, function (err) {
       ph.exit();
-      deferred.resolve(true);
+      if(err){
+        deferred.reject(err);
+      } else {
+        deferred.resolve(true);
+      }
     });
     return deferred.promise;
   },

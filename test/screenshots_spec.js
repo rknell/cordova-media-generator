@@ -43,7 +43,7 @@ describe('Screenshots', function () {
   });
 
   describe('generate all', function () {
-    this.timeout(30000);
+    this.timeout(60000);
     screenshots.pages.push({url: "http://www.google.com", name: "home"});
 
     it('should return', function (done) {
