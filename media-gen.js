@@ -5,13 +5,17 @@ var gm = require('gm'),
   path = require('path'),
   fs = require('fs'),
   screenshots = require('./screenshots'),
-  config, iOSProjectName;
+  config, iOSProjectName,
+  q = require('q');
 
 
 function resize(width, height, bgColour, imagePath, outputFilename, outputPath) {
+  var deferred= q.defer()
   gm(path.join(process.cwd(), imagePath)).size(function (error, size) {
+
     if (error) {
       console.error("GM Error", error);
+      deferred.reject(error);
     } else {
       // current image size
       var imageWidth = size.width;
@@ -53,16 +57,21 @@ function resize(width, height, bgColour, imagePath, outputFilename, outputPath) 
           .write(path.join(process.cwd(), "platforms", outputPath, outputFilename), function (error) {
             if (error) {
               console.error("Write file error", error);
+              deferred.reject(error);
             } else {
               console.log(this.outname);
+              deferred.resolve(this.outname);
             }
           });
       });
     }
+
   });
+  return deferred.promise;
 }
 
 function generate() {
+  var deferred = q.defer()
 
 
   fs.readdir(path.join(process.cwd(), "platforms", "ios"), function (err, result) {
@@ -78,6 +87,7 @@ function generate() {
       });
     }
 
+    if(!config && config.image) config.image ={filename: "./icon.png"};
 
     var images = [
       //IOS Icons
@@ -598,15 +608,30 @@ function generate() {
         }
         resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
       });
+      deferred.resolve();
     }
   });
+  return deferred.promise;
 }
 
 function genConfig() {
-  var destFile = path.join(process.cwd(), "mediagen-config.json"),
-    sourceFile = path.join(__dirname, "mediagen-config.json");
-  fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
+  var deferred = q.defer();
+  var destFile = path.join(process.cwd(), "mediagen-config.json");
+
+  fs.writeFile(destFile, JSON.stringify({
+    "icon": {"filename":"icon.png","background":"fff"},
+    "splash": {"filename":"splash.png","background":"fff"},
+    "customImages": [
+      {"width": 120, "height": 120, "path": "../Media/custom", "filename":"outputFilename.png", "source":{"filename":"image.png","background":"fff"}}
+    ],
+    "screenshots": [
+      {"url":"http://www.google.com", "name":"homepage"}
+    ]
+  }, null, 4), function(err){
+    deferred.resolve("success");
+  });
   console.log("Created `mediagen-config.json` file in the current directory.");
+  return deferred.promise;
 }
 
 
@@ -624,4 +649,10 @@ switch (process.argv[2]) {
     break;
   default:
     generate();
+}
+
+module.exports = {
+  __resize: resize,
+  __generate: generate,
+  __genConfig: genConfig
 }

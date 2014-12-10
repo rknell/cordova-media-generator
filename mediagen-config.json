@@ -1,10 +1,28 @@
 {
-    "icon": {"filename":"icon.png","background":"fff"},
-    "splash": {"filename":"splash.png","background":"fff"},
+    "icon": {
+        "filename": "icon.png",
+        "background": "fff"
+    },
+    "splash": {
+        "filename": "splash.png",
+        "background": "fff"
+    },
     "customImages": [
-        {"width": 120, "height": 120, "path": "../Media/custom", "filename":"outputFilename.png", "source":{"filename":"image.png","background":"fff"}}
+        {
+            "width": 120,
+            "height": 120,
+            "path": "../Media/custom",
+            "filename": "outputFilename.png",
+            "source": {
+                "filename": "image.png",
+                "background": "fff"
+            }
+        }
     ],
     "screenshots": [
-        {"url":"http://www.google.com", "name":"homepage"}
+        {
+            "url": "http://www.google.com",
+            "name": "homepage"
+        }
     ]
 }
