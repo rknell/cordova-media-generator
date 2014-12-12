@@ -14,11 +14,6 @@ with NodeJS installed:
 $ npm install -g cordova-media-generator
 ```
 
-Then:
-```bash
-$ npm init
-```
-
 Once installed, cd to the root of your Cordova application and run:
 ```bash
 $ mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
