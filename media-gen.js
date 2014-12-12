@@ -585,7 +585,7 @@ function generate() {
         var background, sourceImage;
 
 
-        if (!image.source) {
+        if (process.argv[2]) {
           /*
            Legacy Configuration
            */
@@ -599,13 +599,11 @@ function generate() {
           } else {
             sourceImage = config.image;
           }
-          /*
-
-           */
         } else {
           sourceImage = image.source.filename;
           background = image.source.background;
         }
+        console.log("Args:", background, sourceImage, image.filename, image.path);
         resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
       });
       deferred.resolve();
