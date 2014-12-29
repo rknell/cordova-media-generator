@@ -92,6 +92,13 @@ function generate() {
     var images = [
       //IOS Icons
       {
+        width: 180,
+        height: 180,
+        path: "ios/" + iOSProjectName + "/Resources/icons",
+        filename: "icon-60@3x.png",
+        source: process.argv[2] || config.icon || config.image
+      },
+      {
         width: 120,
         height: 120,
         path: "ios/" + iOSProjectName + "/Resources/icons",
@@ -110,6 +117,13 @@ function generate() {
         height: 80,
         path: "ios/" + iOSProjectName + "/Resources/icons",
         filename: "icon-40@2x.png",
+        source: process.argv[2] || config.icon || config.image
+      },
+      {
+        width: 120,
+        height: 120,
+        path: "ios/" + iOSProjectName + "/Resources/icons",
+        filename: "icon-40@3x.png",
         source: process.argv[2] || config.icon || config.image
       },
       {
@@ -162,6 +176,13 @@ function generate() {
         source: process.argv[2] || config.icon || config.image
       },
       {
+        width: 120,
+        height: 120,
+        path: "ios/" + iOSProjectName + "/Resources/icons",
+        filename: "icon-120.png",
+        source: process.argv[2] || config.icon || config.image
+      },
+      {
         width: 29,
         height: 29,
         path: "ios/" + iOSProjectName + "/Resources/icons",
@@ -173,6 +194,13 @@ function generate() {
         height: 58,
         path: "ios/" + iOSProjectName + "/Resources/icons",
         filename: "icon-small@2x.png",
+        source: process.argv[2] || config.icon || config.image
+      },
+      {
+        width: 87,
+        height: 87,
+        path: "ios/" + iOSProjectName + "/Resources/icons",
+        filename: "icon-small@3x.png",
         source: process.argv[2] || config.icon || config.image
       },
       {
