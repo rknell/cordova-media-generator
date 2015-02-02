@@ -85,3 +85,6 @@ The config variables are below:
 - screenshots: An array of screenshot objects
     - url: url to your local development server
     - name: name of the page for easy reference later on
+
+##Changelog
+v0.3.5 - Fix crash if no screenshots are specified

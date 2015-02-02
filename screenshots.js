@@ -73,7 +73,7 @@ var output = {
         cb1(err);
       })
     }, function (err) {
-      ph.exit();
+      if(ph) ph.exit();
       if(err){
         deferred.reject(err);
       } else {
