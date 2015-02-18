@@ -605,7 +605,7 @@ function generate() {
         //Screenshot version of the logo
 
       ];
-    }
+    //}
 
 
     if (config.screenshots && config.screenshots.length)
