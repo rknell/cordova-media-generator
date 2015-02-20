@@ -598,14 +598,13 @@ function generate() {
           width: 1024,
           height: 1024,
           path: "../Media/ios/store",
-          filename: "1024x1024-AppIcon.png",
+          filename: "1024x1024-AppIcon.jpg",
           source: process.argv[2] || config.icon || config.image
         }
 
         //Screenshot version of the logo
 
       ];
-    //}
 
 
     if (config.screenshots && config.screenshots.length)
