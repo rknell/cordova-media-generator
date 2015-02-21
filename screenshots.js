@@ -112,8 +112,8 @@ var output = {
     },
     {filename: "iphone4-640x960-port", width: 640, height: 960, savePath: 'Media/ios/screenshots/iphone4'},
     {filename: "iphone5-640x1136-port", width: 640, height: 1136, savePath: 'Media/ios/screenshots/iphone5'},
-    {filename: "iphone6p-1080x1920-port", width: 1080, height: 1920, savePath: 'Media/ios/screenshots/iphone6p'},
-    {filename: "iphone6p-1920x1080-land", width: 1920, height: 1080, savePath: 'Media/ios/screenshots/iphone6p'},
+    {filename: "iphone6p-1242x2208-port", width: 1242, height: 2208, savePath: 'Media/ios/screenshots/iphone6p'},
+    {filename: "iphone6p-2208x1242-land", width: 2208, height: 1242, savePath: 'Media/ios/screenshots/iphone6p'},
     {filename: "iphone6-1334x750-land", width: 1334, height: 750, savePath: 'Media/ios/screenshots/iphone6'},
     {filename: "iphone6-750x1334-port", width: 750, height: 1334, savePath: 'Media/ios/screenshots/iphone6'}
   ]
