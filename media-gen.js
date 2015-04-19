@@ -650,11 +650,14 @@ function generate() {
             sourceImage = config.image;
           }
         } else {
-          sourceImage = image.source.filename;
-          background = image.source.background;
+          if(image.source){
+            sourceImage = image.source.filename;
+            background = image.source.background;
+          }
         }
         //console.log("Args:", background, sourceImage, image.filename, image.path);
-        resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
+        if(sourceImage)
+          resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
       });
       deferred.resolve();
     }
