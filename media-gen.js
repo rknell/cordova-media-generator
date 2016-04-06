@@ -122,13 +122,6 @@ function generate() {
         source: process.argv[2] || config.icon || config.image
       },
       {
-        width: 120,
-        height: 120,
-        path: "ios/" + iOSProjectName + iOsIconFolder,
-        filename: "icon-40@3x.png",
-        source: process.argv[2] || config.icon || config.image
-      },
-      {
         width: 50,
         height: 50,
         path: "ios/" + iOSProjectName + iOsIconFolder,
@@ -140,13 +133,6 @@ function generate() {
         height: 100,
         path: "ios/" + iOSProjectName + iOsIconFolder,
         filename: "icon-50@2x.png",
-        source: process.argv[2] || config.icon || config.image
-      },
-      {
-        width: 60,
-        height: 60,
-        path: "ios/" + iOSProjectName + iOsIconFolder,
-        filename: "icon-60.png",
         source: process.argv[2] || config.icon || config.image
       },
       {
@@ -178,10 +164,10 @@ function generate() {
         source: process.argv[2] || config.icon || config.image
       },
       {
-        width: 120,
-        height: 120,
+        width: 167,
+        height: 167,
         path: "ios/" + iOSProjectName + iOsIconFolder,
-        filename: "icon-120.png",
+        filename: "icon-83.5@2x.png",
         source: process.argv[2] || config.icon || config.image
       },
       {
@@ -272,7 +258,7 @@ function generate() {
         },
         {
           width: 750,
-          height: 1344,
+          height: 1334,
           path: "ios/" + iOSProjectName + iOsSplashFolder,
           filename: "Default-667h.png",
           source: process.argv[2] || config.splash || config.image
