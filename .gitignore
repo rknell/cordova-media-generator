@@ -1,8 +1,9 @@
 *.jpg
-*.png
 *.svg
 *.gif
 /ios/*
 /android/*
 /node_modules
 npm-debug.log
+media/
+res/

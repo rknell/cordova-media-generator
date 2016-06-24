@@ -2,11 +2,24 @@ cordova-media-generator
 =======================
 
 CLI Utility that generates Cordova / Phonegap image assets required for app store submission, icons, and splash screens.
+
 It requires your logo to have a solid background colour but does not distort or lose any image content so everything is at the maximum size without loss.
 
-## New in v0.3.0 - Support for screenshots courtesy of PhantomJS
+## New in v0.4.0
+- Removed screenshot generator - just didn't work
+- Completely overhauled the old version, removed a bunch of legacy commands and simplified updating new images.
+- Make Cordova iOS4 compatible.
+- Now using the config.xml to do all configuration and creating the exact same file format as referenced in
+ http://cordova.apache.org/docs/en/latest/config_ref/images.html
+ 
+ **For a full copy/paste set for your config.xml see instructions.xml in the root of the source.**
 
 Usage:
+
+You need to have graphicsMagick installed before you can generate any assets (with homebrew installed on OSX):
+```bash
+$ brew install gm
+```
 
 with NodeJS installed:
 
@@ -16,12 +29,7 @@ $ npm install -g cordova-media-generator
 
 Once installed, cd to the root of your Cordova application and run:
 ```bash
-$ mediagen <logofilename.jpg> <backgroundcolourinhex-egFFF>
-```
-
-EXAMPLE:
-```bash
-$ mediagen logo.jpg fff
+$ mediagen init
 ```
 
 If you have created a `mediagen-config.json` file (see below), you can just run:
@@ -60,11 +68,6 @@ It will create an example file called `mediagen-config.json` which you can now e
 }
 ```
 
-##Screenshots (Experimental)
-Screenshots are a new feature that use PhantomJS to quickly generate a number of the screenshot assets you need when submitting to the app store. You need your local development server running when you execute `mediagen` so it can access the Cordova versions of the files. Of course this won't be able to access a number of things in lots of apps but hopefully it should get you up on the app store pretty quickly.
-This is still pretty experimental, and also please be aware that it may seem to hang for a minute or so before you see the screenshots being generated (it does need to visit the page each time!)
-
-
 ##Config
 The config variables are below:
 
@@ -87,5 +90,7 @@ The config variables are below:
     - name: name of the page for easy reference later on
 
 ##Changelog
+v0.4.0 - Removed support for PhantomJS screenshots - they just weren't up to scratch.
+       - Added support for Cordova 4 and moved to config.xml file setup instead of just replacing images in their place
 v0.3.6 - Added support for icon-60@3x, 667h Portrait, 736h Landscape, 736h Portrait
 v0.3.5 - Fix crash if no screenshots are specified

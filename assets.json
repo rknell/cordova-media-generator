@@ -1,0 +1,272 @@
+[
+  {
+    "width": 180,
+    "height": 180,
+    "path": "res/ios",
+    "filename": "icon-60@3x.png"
+  },
+  {
+    "width": 120,
+    "height": 120,
+    "path": "res/ios",
+    "filename": "icon-60@2x.png"
+  },
+  {
+    "width": 40,
+    "height": 40,
+    "path": "res/ios",
+    "filename": "icon-40.png"
+  },
+  {
+    "width": 80,
+    "height": 80,
+    "path": "res/ios",
+    "filename": "icon-40@2x.png"
+  },
+  {
+    "width": 120,
+    "height": 120,
+    "path": "res/ios",
+    "filename": "icon-40@3x.png"
+  },
+  {
+    "width": 50,
+    "height": 50,
+    "path": "res/ios",
+    "filename": "icon-50.png"
+  },
+  {
+    "width": 100,
+    "height": 100,
+    "path": "res/ios",
+    "filename": "icon-50@2x.png"
+  },
+  {
+    "width": 60,
+    "height": 60,
+    "path": "res/ios",
+    "filename": "icon-60.png"
+  },
+  {
+    "width": 72,
+    "height": 72,
+    "path": "res/ios",
+    "filename": "icon-72.png"
+  },
+  {
+    "width": 144,
+    "height": 144,
+    "path": "res/ios",
+    "filename": "icon-72@2x.png"
+  },
+  {
+    "width": 167,
+    "height": 167,
+    "path": "res/ios",
+    "filename": "icon-835@2x.png"
+  },
+  {
+    "width": 76,
+    "height": 76,
+    "path": "res/ios",
+    "filename": "icon-76.png"
+  },
+  {
+    "width": 152,
+    "height": 152,
+    "path": "res/ios",
+    "filename": "icon-76@2x.png"
+  },
+  {
+    "width": 120,
+    "height": 120,
+    "path": "res/ios",
+    "filename": "icon-120.png"
+  },
+  {
+    "width": 29,
+    "height": 29,
+    "path": "res/ios",
+    "filename": "icon-small.png"
+  },
+  {
+    "width": 58,
+    "height": 58,
+    "path": "res/ios",
+    "filename": "icon-small@2x.png"
+  },
+  {
+    "width": 87,
+    "height": 87,
+    "path": "res/ios",
+    "filename": "icon-small@3x.png"
+  },
+  {
+    "width": 57,
+    "height": 57,
+    "path": "res/ios",
+    "filename": "icon.png"
+  },
+  {
+    "width": 114,
+    "height": 114,
+    "path": "res/ios",
+    "filename": "icon@2x.png"
+  },
+  {
+    "width": 640,
+    "height": 1136,
+    "path": "res/screen/ios",
+    "filename": "Default-568h@2x~iphone.png"
+  },
+  {
+    "width": 2048,
+    "height": 1536,
+    "path": "res/screen/ios",
+    "filename": "Default-Landscape@2x~ipad.png"
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "path": "res/screen/ios",
+    "filename": "Default-Landscape~ipad.png"
+  },
+  {
+    "width": 1536,
+    "height": 2048,
+    "path": "res/screen/ios",
+    "filename": "Default-Portrait@2x~ipad.png"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "path": "res/screen/ios",
+    "filename": "Default-Portrait~ipad.png"
+  },
+  {
+    "width": 640,
+    "height": 960,
+    "path": "res/screen/ios",
+    "filename": "Default@2x~iphone.png"
+  },
+  {
+    "width": 320,
+    "height": 480,
+    "path": "res/screen/ios",
+    "filename": "Default~iphone.png"
+  },
+  {
+    "width": 750,
+    "height": 1334,
+    "path": "res/screen/ios",
+    "filename": "Default-667h.png"
+  },
+  {
+    "width": 1242,
+    "height": 2208,
+    "path": "res/screen/ios",
+    "filename": "Default-736h.png"
+  },
+  {
+    "width": 2208,
+    "height": 1242,
+    "path": "res/screen/ios",
+    "filename": "Default-Landscape-736h.png"
+  },
+  {
+    "width": 96,
+    "height": 96,
+    "path": "res/android",
+    "filename": "xhdpi.png"
+  },
+  {
+    "width": 72,
+    "height": 72,
+    "path": "res/android",
+    "filename": "hdpi.png"
+  },
+  {
+    "width": 36,
+    "height": 36,
+    "path": "res/android",
+    "filename": "ldpi.png"
+  },
+  {
+    "width": 48,
+    "height": 48,
+    "path": "res/android",
+    "filename": "mdpi.png"
+  },
+  {
+    "width": 320,
+    "height": 200,
+    "path": "res/screen/android",
+    "filename": "splash-land-ldpi.png"
+  },
+  {
+    "width": 200,
+    "height": 320,
+    "path": "res/screen/android",
+    "filename": "splash-port-ldpi.png"
+  },
+  {
+    "width": 480,
+    "height": 320,
+    "path": "res/screen/android",
+    "filename": "splash-land-mdpi.png"
+  },
+  {
+    "width": 320,
+    "height": 480,
+    "path": "res/screen/android",
+    "filename": "splash-port-mdpi.png"
+  },
+  {
+    "width": 800,
+    "height": 480,
+    "path": "res/screen/android",
+    "filename": "splash-land-hdpi.png"
+  },
+  {
+    "width": 480,
+    "height": 800,
+    "path": "res/screen/android",
+    "filename": "splash-port-hdpi.png"
+  },
+  {
+    "width": 1280,
+    "height": 720,
+    "path": "res/screen/android",
+    "filename": "splash-land-xhdpi.png"
+  },
+  {
+    "width": 720,
+    "height": 1280,
+    "path": "res/screen/android",
+    "filename": "splash-port-xhdpi.png"
+  },
+  {
+    "width": 512,
+    "height": 512,
+    "path": "res/appstore/android",
+    "filename": "512.png"
+  },
+  {
+    "width": 1024,
+    "height": 500,
+    "path": "res/appstore/android",
+    "filename": "1024x500.png"
+  },
+  {
+    "width": 180,
+    "height": 120,
+    "path": "res/appstore/android",
+    "filename": "180x120.png"
+  },
+  {
+    "width": 1024,
+    "height": 1024,
+    "path": "res/appstore/ios",
+    "filename": "1024x1024-AppIcon.jpg"
+  }
+]

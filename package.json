@@ -18,13 +18,11 @@
   "author": "Snappy Apps",
   "license": "Apache 2.0",
   "dependencies": {
-    "async": "^0.9.0",
-    "gm": "^1.16.0",
-    "mkdirp": "^0.5.0",
-    "phantom": "^0.6.6",
-    "phantomjs": "^1.9.10",
-    "q": "^1.1.2",
-    "weak": "^0.3.3"
+    "async": "^1.5.2",
+    "gm": "^1.21.1",
+    "mkdirp": "^0.5.1",
+    "q": "^1.4.1",
+    "weak": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^1.9.2",
