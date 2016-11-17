@@ -5,7 +5,8 @@
     },
     "splash": {
         "filename": "splash.png",
-        "background": "fff"
+        "background": "fff",
+        "strategy": "cover"
     },
     "customImages": [
         {

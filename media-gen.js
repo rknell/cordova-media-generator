@@ -7,10 +7,11 @@ var gm = require('gm'),
   config, iOSProjectName,
   q = require('q');
 
-function resize(width, height, bgColour, imagePath, outputFilename, outputPath) {
+function resize(width, height, bgColour, imagePath, outputFilename, outputPath, strategy) {
   var deferred = q.defer()
   gm(path.join(process.cwd(), imagePath)).size(function (error, size) {
 
+    console.log("Stategy", strategy);
     if (error) {
       console.error("GM Error", error);
       deferred.reject(error);
@@ -27,25 +28,40 @@ function resize(width, height, bgColour, imagePath, outputFilename, outputPath) 
         //Landscape or square
         var newWidth = height * imageRatio;
 
-        if (newWidth >= width) {
-          this.resize(width);
+        if (strategy === "cover") {
+          if (newWidth <= width) {
+            this.resize(width);
+          } else {
+            this.resize(null, height);
+          }
         } else {
-          this.resize(null, height);
+          if (newWidth >= width) {
+            this.resize(width);
+          } else {
+            this.resize(null, height);
+          }
         }
-
       } else {
         var newHeight = width / imageRatio;
 
-        if (newHeight >= height) {
-          this.resize(null, height);
+        if (strategy === "cover") {
+          if (newHeight <= height) {
+            this.resize(null, height);
+          } else {
+            this.resize(width);
+          }
         } else {
-          this.resize(width);
+          if (newHeight >= height) {
+            this.resize(null, height);
+          } else {
+            this.resize(width);
+          }
         }
 
       }
 
-      var x = (width / 2) - (imageWidth / 2);
-      var y = (height / 2) - (imageHeight / 2);
+      // var x = (width / 2) - (imageWidth / 2);
+      // var y = (height / 2) - (imageHeight / 2);
 
       mkdirp(path.join(process.cwd(), outputPath), function (err) {
         image.background(bgColour)
@@ -72,7 +88,7 @@ function generate() {
 
   var images = require('./assets.json');
 
-  if(!config){
+  if (!config) {
     console.log("Please run `mediagen init` first to create a configuration file, edit that and re-run mediagen");
     return;
   }
@@ -91,7 +107,7 @@ function generate() {
   console.log("------------------------------");
 
   images.forEach(function (image) {
-    var background, sourceImage;
+    var background, sourceImage, strategy;
 
     if (image.source) {
       sourceImage = image.source.filename;
@@ -100,13 +116,15 @@ function generate() {
       if (image.path.indexOf("screen") === -1) {
         sourceImage = config.icon.filename;
         background = config.icon.background;
+        strategy = config.icon.strategy;
       } else {
         sourceImage = config.splash.filename;
         background = config.splash.background;
+        strategy = config.splash.strategy;
       }
     }
     if (sourceImage)
-      resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path);
+      resize(image.width, image.height, '#' + background, sourceImage, image.filename, image.path, strategy);
   });
   deferred.resolve();
   return deferred.promise;
@@ -117,8 +135,8 @@ function genConfig() {
   var destFile = path.join(process.cwd(), "mediagen-config.json");
 
   fs.writeFile(destFile, JSON.stringify({
-    "icon": {"filename": "icon.png", "background": "fff"},
-    "splash": {"filename": "splash.png", "background": "fff"},
+    "icon": {"filename": "icon.png", "background": "fff", stategy: "contain"},
+    "splash": {"filename": "splash.png", "background": "fff", stategy: "contain"},
     "customImages": [
       {
         "width": 120,
