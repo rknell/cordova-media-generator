@@ -56,4 +56,6 @@
     <icon src="res/ios/icon-50.png" width="50" height="50" />
     <icon src="res/ios/icon-50@2x.png" width="100" height="100" />
     <icon src="res/ios/icon-835@2x.png" width="167" height="167" />
+    <!-- iOS marketing icon-->
+    <icon src="res/appstore/ios/1024x1024-AppIcon.jpg" height="1024" width="1024"  />
 </platform>
