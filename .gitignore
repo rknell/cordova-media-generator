@@ -7,3 +7,5 @@
 npm-debug.log
 media/
 res/
+.DS_Store
+.idea
